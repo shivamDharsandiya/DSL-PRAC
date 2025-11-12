@@ -1,0 +1,706 @@
+﻿Q1:
+def avg(l,n):
+    print("avg ::",sum(l)/n)
+
+
+def high(l):
+    print("max no ::",max(l))
+    
+def low(l):
+    print("min no :: ",min(l))
+    
+def zero(l):
+    print("zeros :: ",l.count(0))
+    
+def freq(l):
+    v={}
+    for i in l:
+        if i in v:
+            v[i]+=1
+        else:
+            v[i]=1
+    for i in v:
+        print(i,"  frequency:  ",v[i])
+
+
+            
+
+
+
+
+print("Library borrow records")
+l=[]
+n=int(input("enter no. of members:"))
+for i in range(n):
+    x=int(input("enter no. of books borrowed : "))
+    l.append(x)
+
+
+while True:
+    print("menu")
+    print("1.make avg")
+    print("2.higest no.")
+    print("3.lowest no.")
+    print("4.cout zeros ")
+    print("5.frequency ")
+    print("6.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        avg(l,n)
+    elif c==2:
+        high(l)
+    elif c==3:
+        low(l)
+    elif c==4:
+        zero(l)
+    elif c==5:
+        freq(l)
+    elif c==6:
+        print("exiting")
+        break
+    else:
+        print("invalid input")
+
+
+
+
+Q2:
+def avg(l,n):
+    print("avg marks::",sum(l)/n)
+
+
+def high(l):
+    print("max no. of marks ::",max(l))
+    
+def low(l):
+    print("min no. of marks :: ",min(l))
+    
+def zero(l):
+    print("zero marks :: ",l.count(0))
+    
+def freq(l):
+    print("Marks freq :: ")
+    v={}
+    for i in l:
+        if i in v:
+            v[i]+=1
+        else:
+            v[i]=1
+    for i in v:
+        print(i,"  frequency:  ",v[i])
+
+
+            
+
+
+
+
+print("MARKS OF STUDENTS")
+l=[]
+n=int(input("enter no. of Sudents:"))
+for i in range(n):
+    x=int(input("enter the marks of student:"))
+    l.append(x)
+
+
+while True:
+    print("menu")
+    print("1.avg marks ")
+    print("2.higest marks")
+    print("3.lowest marks")
+    print("4.count zero marks ")
+    print("5.marks frequency ")
+    print("6.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        avg(l,n)
+    elif c==2:
+        high(l)
+    elif c==3:
+        low(l)
+    elif c==4:
+        zero(l)
+    elif c==5:
+        freq(l)
+    elif c==6:
+        print("exiting")
+        break
+    else:
+        print("invalid input")
+
+
+
+
+Q3:
+def S(l):
+    key=int(input("enter the customer id to search :"))
+    for i in range (len(l)):
+        if key==l[i]:
+            print("customer id found at index ",i,":",l[i])
+
+
+print("CUSTOMERS ID SOFTWARE")
+l=[]
+n=int(input("enter no. of customers:"))
+for i in range(n):
+    x=int(input("enter customer ID:"))
+    l.append(x)
+
+
+while True:
+    print("1.search")
+    print("2.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        S(l)
+    
+    elif c==2:
+        print("exiting")
+        break
+    else:
+        print("invalid input")
+
+
+Q4:
+def binarysearch(l):
+    key=int(input("enter the customer id to search :"))
+    l.sort()
+    
+    found=0
+    low=0
+    high=n
+    
+    while low<=high:
+        mid=(low+high)//2
+        
+        if l[mid]==key:
+             print("customer id found at index ",mid,":",l[mid])
+             found=1
+             break
+        elif key < l[mid]:
+             high=mid-1
+        else:
+             low=mid+1
+    if found==0:
+        print("customer id not found")
+   
+
+
+print("CUSTOMERS ID SOFTWARE")
+l=[]
+n=int(input("enter no. of customers:"))
+for i in range(n):
+    x=int(input("enter customer ID:"))
+    l.append(x)
+
+
+while True:
+    print("1. binary search")
+    print("2.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        binarysearch(l)
+    
+    elif c==2:
+        print("exiting")
+        break
+    else:
+        print("invalid input")
+
+
+Q5:
+def binarysearch(l,n):
+    key=int(input("enter the customer id to search :"))
+    l.sort()
+    
+    found=0
+    low=0
+    high=n-1
+    
+    while low<=high:
+        mid=(low+high)//2
+        
+        if l[mid]==key:
+             print("customer id found at index ",mid,":key ::",l[mid])
+             found=1
+             break
+        elif key < l[mid]:
+             high=mid-1
+        else:
+             low=mid+1
+             
+    if found == 0:
+        print("customer id not found")
+   
+   
+def linearsearch(l,n):
+    key=int(input("enter the customer id to search :"))
+    found=0
+    for i in range(len(l)):
+        if key == l[i]:
+            print("customer id found at index ",i,": key ::",l[i])
+            found=1
+            
+    if found ==0:
+        print("customer id not found")
+        
+
+
+print("CUSTOMERS ID SOFTWARE")
+l=[]
+n=int(input("enter no. of customers:"))
+for i in range(n):
+    x=int(input("enter customer ID:"))
+    l.append(x)
+
+
+while True:
+    print("1. binary search")
+    print("2. linear search")
+    print("3.exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        binarysearch(l,n)
+    
+    elif c==2:
+        linearsearch(l,n)
+    
+    elif c==3:
+        print("exiting")
+        break
+    else:
+        print("invalid input")
+
+
+Q6: 
+Same as Q4
+
+
+Q7,Q8,Q9,Q10:
+def selection(l,n):
+    
+    for i in range (len(l)):
+        min=i
+        for j in range(i+1,len(l)):
+            
+            if l[j]<l[i]:
+                min=j
+                l[i],l[min]=l[min],l[i]
+    print(l)        
+
+
+def bubble(l,n):
+    
+    for i in range(len(l)):
+        for j in range(len(l)-1):
+            if l[j]>l[j+1]:
+                l[j],l[j+1]=l[j+1],l[j]
+    print(l)
+
+
+def topfive(l):
+    print("top five::",l[-5:])
+
+
+print("SALARIES OF EMPLOYES")
+l=[]
+n=int(input("enter no. of employes:"))
+for i in range(n):
+    x=int(input("enter their salaries:"))
+    l.append(x)
+print(l)
+
+
+
+
+while True:
+    print("1. selection sort")
+    print("2. bubble sort")
+    print("3. top five salaries")
+    print("4. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        selection(l,n)
+    
+    elif c==2:
+       bubble(l,n)
+       
+    elif c==3:
+        topfive(l)
+    
+    elif c==4:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q11:
+def undof(txt,undo,redo):
+    if undo:
+        redo.append(txt)
+        txt=undo.pop()
+        print("current txt :: ",txt)
+    else:
+        print("nothing to undo")
+
+
+def redof(txt,undo,redo):
+    if redo:
+        undo.append(txt)
+        txt=redo.pop()
+        print("current txt :: ",txt)
+    else:
+        print("nothing to redo")
+    
+
+
+
+
+
+
+print("TEXT EDITOR")
+undo=[]
+redo=[]
+txt=""
+
+
+
+
+while True:
+    print("1. make a change")
+    print("2. undo")
+    print("3. redo")
+    print("4. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        undo.append(txt)
+        txt=input("enter your text :: ")
+        redo.clear()
+        print("current txt :: ",txt)
+        
+    
+    elif c==2:
+       undof(txt,undo,redo)
+       
+    elif c==3:
+        redof(txt,undo,redo)
+    
+    elif c==4:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+
+
+Q12:
+def process(l):
+    if l:
+        p=l.pop(0)
+        print("event processed is :: ",p)  
+        
+        
+def display(l):
+    print("pending events :: ",l)
+    
+    
+def cancel(l):
+    t=input("enter event to cancel:: ")
+    if t in l:
+        l.remove(t)
+        print(t,":: is canceled succesfully ")
+
+
+
+
+print("EVENT PROCESSING")
+l=[]
+
+
+
+
+while True:
+    print("1. add event")
+    print("2. process event")
+    print("3. display pending events")
+    print("4. cancel an event ")
+    print("5. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        x=input("write event to add :: ")
+        l.append(x)
+        
+    
+    elif c==2:
+       process(l)
+       
+    elif c==3:
+        display(l)
+        
+    elif c==4:
+        cancel(l)
+    
+    elif c==5:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q13:
+def ans_call(call,time):
+    a=call.pop(0)
+    t=time.pop(0)
+    print("removed call : ",a,": time:: ", t,"mims")
+    
+def display(call,time):
+    print("remaing calls :")
+    for i in range(len(call)):
+         print(call[i],": time :: ",time[i]," mins")
+         
+def is_empty(call,time):
+    if call:
+        print("is not empty")
+    else :
+        print("is empty")
+    
+
+
+print("CALL CENTER PROGRAM")
+call=[]
+time=[]
+
+
+while True:
+    print("1. add call")
+    print("2. answer call")
+    print("3. display all call")
+    print("4. check call list ")
+    print("5. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        x=input("write caller id : ")
+        call.append(x)
+        z=int(input("calling time :: "))
+        time.append(z)
+        
+    
+    elif c==2:
+       ans_call(call,time)
+       
+    elif c==3:
+        display(call,time)
+        
+    elif c==4:
+        is_empty(call,time)
+    
+    elif c==5:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q14:
+
+
+
+
+print("JOB SIMULATION")
+job=[]
+
+
+while True:
+    print("1. add job")
+    print("2. delete job")
+    print("3. display all job")
+    print("4. check job list ")
+    print("5. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        x=input("enter job to add :: ")
+        job.append(x)
+        print(x," : job added succefully")
+       
+        
+    
+    elif c==2:
+        d=job.pop(0)
+        print(d," : job processed succesfully")
+       
+       
+    elif c==3:
+        print("pending jobs:: ")
+        print(job)
+        
+    elif c==4:
+        if job:
+            print("job queue is not empty ")
+        else:
+            print("jod queue is empty")
+        
+    
+    elif c==5:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q15:
+def insert(key,value,hash_table):
+    index=key%10
+    hash_table[index][key]=value
+    
+    
+def delete(key,hash_table):
+    index=key%10
+    if key in hash_table[index]:
+        d = hash_table[index].pop(key)
+        print("deleted :: ",d)
+        
+def display(hash_table):
+    print(hash_table)
+    
+def search(key,hash_table):
+    index=key%10
+    if key in hash_table[index]:
+        print("key found at index : ", index,"key : ",key," value : ",hash_table[index][key])
+    else:
+        print("not found ")
+
+
+print("HASH TABLE SIMULATION")
+hash_table=[{} for _ in range(10)]
+
+
+while True:
+    print("1. insert value")
+    print("2. delete value")
+    print("3. display hash table")
+    print("4. search key")
+    print("5. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        key=int(input("enter the key to insert :: "))
+        value=input("enter the value to insert :: ")
+        insert(key,value,hash_table)
+    
+    elif c==2:
+        key=int(input("enter the key to delete :: "))
+        delete(key,hash_table)
+        
+        
+    elif c==3:
+        display(hash_table)
+        
+    elif c==4:
+        key=int(input("enter the key to search :: "))
+        search(key,hash_table)
+      
+      
+    elif c==5:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q16:
+def insert(key,value,hash_table,size):
+    index=key%size
+    while hash_table[index] is not None:
+        index=(index+1)%size
+    hash_table[index]=(key,value)
+    
+    
+def delete(key,hash_table,size):
+    index=key%size
+    for _ in range(size):
+        
+        if key in hash_table[index]:
+            print("deleted :: ",hash_table[index])
+            hash_table[index]=None
+            return
+        index = (index+1)%size
+    
+       
+def display(hash_table):
+    print(hash_table)
+    
+def search(key,hash_table,size):
+    index=key%size
+    
+    for _ in range(size):
+        
+        if key in hash_table[index]:
+            print("key found at index : ", index,"keys n values :: ",hash_table[index])
+            return
+        index=(index+1)%size
+        
+
+
+print("HASH TABLE SIMULATION")
+size=int(input("enter the size of hash table :: "))
+hash_table=[None for _ in range(size)]
+
+
+while True:
+    print("1. insert value")
+    print("2. delete value")
+    print("3. display hash table")
+    print("4. search key")
+    print("5. exit")
+    
+    c=int(input("enter your choice : "))
+    
+    if c==1:
+        key=int(input("enter the key to insert :: "))
+        value=input("enter the value to insert :: ")
+        insert(key,value,hash_table,size)
+    
+    elif c==2:
+        key=int(input("enter the key to delete :: "))
+        delete(key,hash_table,size)
+        
+        
+    elif c==3:
+        display(hash_table)
+        
+    elif c==4:
+        key=int(input("enter the key to search :: "))
+        search(key,hash_table,size)
+      
+      
+    elif c==5:
+        print("exiting....")
+        break
+    else:
+        print("invalid input")
+
+
+Q17:

@@ -1,0 +1,95 @@
+def avg(members_list):
+    print("The average no. of books borrowed is :: ",sum(members_list)/len(members_list))
+
+def high(book_name):
+    max_val=max(book_name.values())
+    max_in=max(book_name ,key=book_name.get)
+            
+    print("Higest no. of book borrowed is :: ",max_val)
+    print("Higest name of book borrowed is :: ",max_in)
+    
+def low(book_name):
+    min_val=min(book_name.values())
+    min_in=min(book_name ,key=book_name.get)       
+    print("Lowest no. of book borrowed is :: ",min_val)
+    print("Lowest name of book borrowed is :: ",min_in)
+    
+def zero(members_list):
+    print("no. of members with 0 borrowed books :: ",members_list.count(0))
+    
+def freq(members_list,book_name):
+    print("Members borrowing frequency : ")
+    for i in range(len(members_list)):
+        print("Member : ",i+1,": borrowed books : ",members_list[i])
+
+
+
+
+members_list=[]
+print("      AVALIABLE BOOKS IN LIBRARY     ")
+book_name={"book1":0,"book2":0,"book3":0,"book4":0,"book5":0}
+
+print(book_name)
+
+n=int(input("Enter no. of members :: "))
+for i in range(n):
+    print("Enter no. of books borrowed by member ",i+1," :: ")
+    x=int(input())
+    members_list.append(x)
+    
+    if x!=0:
+    
+        for j in range(x):
+            
+            print("Enter which books was borrowed :: ")
+            z=input()
+            if z=="book1":
+                book_name["book1"]+=1
+            elif z=="book2":
+                book_name["book2"]+=1
+            elif z=="book3":
+                book_name["book3"]+=1
+            elif z=="book4":
+                book_name["book4"]+=1
+            elif z=="book5":
+                book_name["book5"]+=1
+            else:
+                print("invalid :: book not avaliable")
+                
+    else:
+        continue
+    
+    
+print(members_list)
+print(book_name)
+
+while True:
+    print("Menu")
+    print("1.average borrowed books by members.")
+    print("2.highest no. of book borrowed.")
+    print("3.lowest no. of book borrowed.")
+    print("4.no. of members with no borrowed books.")
+    print("5.frequency of records.")
+    print("6.exit.")
+    
+    c=int(input("Enter your choice :: "))
+    
+    if c==1:
+        avg(members_list)
+    elif c==2:
+        high(book_name)
+    elif c==3:
+        low(book_name)
+    elif c==4:
+        zero(members_list)
+    elif c==5:
+        freq(members_list,book_name)
+    elif c==6:
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid input ")
+
+
+
+
