@@ -1,0 +1,127 @@
+student@IOE-MELab:~$ sudo mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.3.39-MariaDB-0ubuntu0.20.04.2 Ubuntu 20.04
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database assign7;
+Query OK, 1 row affected (0.000 sec)
+
+MariaDB [(none)]> use assign7;
+Database changed
+MariaDB [assign7]> create table employee(
+    -> emp_id int primary key,
+    -> emp_name varchar(50),
+    -> department varchar(50),
+    -> salary decimal(8,2)
+    -> );
+Query OK, 0 rows affected (0.016 sec)
+
+MariaDB [assign7]> insert into employee values(1,'Akash','HR',50000),
+    -> (2,'Shivam','IT',65000),
+    -> (3,'Pranav','IT',60000),
+    -> (4,'Ayan','HR',45000),
+    -> (5,'Atharva','Sales',40000);
+Query OK, 5 rows affected (0.036 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [assign7]> select * from employee;
++--------+----------------+------------+----------+
+| emp_id | emp_name       | department | salary   |
++--------+----------------+------------+----------+
+|      1 | Akash          | HR         | 50000.00 |
+|      2 | Shivam         | IT         | 65000.00 |
+|      3 | Pranav         | IT         | 60000.00 |
+|      4 | Ayan           | HR         | 45000.00 |
+|      5 | Atharva        | Sales      | 40000.00 |
++--------+----------------+------------+----------+
+5 rows in set (0.000 sec)
+	
+MariaDB [assign7]> delimiter $$
+MariaDB [assign7]> create procedure show_emp_by_dept(in p_dept varchar(30))
+    -> begin
+    -> declare done int default 0;
+    -> declare v_emp_id int;
+    -> declare v_emp_name varchar(50);
+    -> declare v_salary decimal(10,2);
+    -> declare v_count int default 0;
+    -> declare emp_cursor cursor for
+    -> select emp_id, emp_name, salary from employee where department = p_dept;
+    -> declare continue handler for not found set done = 1;
+    -> open emp_cursor;
+    -> read_loop: loop
+    -> fetch emp_cursor into v_emp_id, v_emp_name, v_salary;
+    -> if done = 1 then
+    -> leave read_loop;
+    -> end if;
+    -> select v_emp_id as ID, v_emp_name as NAME, v_salary as SALARY;
+    -> set v_count = v_count + 1;
+    -> end loop;
+    -> close emp_cursor;
+    -> select concat('Total Employees in ', p_dept, ' Department: ', v_count) as
+    -> result;
+    -> end $$
+ERROR 1304 (42000): PROCEDURE show_emp_by_dept already exists
+MariaDB [assign7]> delimiter ;
+MariaDB [assign7]> call show_emp_by_dept('IT');
++------+--------+----------+
+| id   | name   | salary   |
++------+--------+----------+
+|    2 | Shivam | 65000.00 |
++------+--------+----------+
+1 row in set (0.001 sec)
+
++------+--------+----------+
+| id   | name   | salary   |
++------+--------+----------+
+|    3 | Pranav | 60000.00 |
++------+--------+----------+
+1 row in set (0.001 sec)
+
++------------------------------------+
+| result                             |
++------------------------------------+
+| total employees in IT Department:2 |
++------------------------------------+
+1 row in set (0.001 sec)
+
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [assign7]> delimiter $$
+MariaDB [assign7]> create function get_total_salary(p_dept varchar(50))
+    -> returns decimal(8,2)
+    -> deterministic
+    -> begin
+    -> declare done int default 0;
+    -> declare v_salary decimal(8,2);
+    -> declare v_total decimal(8,2) default 0;
+    -> declare sal_cursor cursor for
+    -> select salary from employee where dept = p_dept;
+    -> declare continue handler for not found set done = 1;
+    -> open sal_cursor;
+    -> read_loop:loop
+    -> fetch sal_cursor into v_salary;
+    -> if done = 1 then
+    -> leave read_loop;
+    -> end if;
+    -> set v_total = v_total + v_salary;
+    -> end loop;
+    -> close sal_cursor;
+    -> return v_total;
+    -> end $$
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [assign7]> delimiter ;
+MariaDB [assign7]> select get_total_salary('IT') as total_salary;
++--------------+
+| total_salary |
++--------------+
+|    125000.00 |
++--------------+
+1 row in set (0.001 sec)
+
+MariaDB [assign7]> 
+
